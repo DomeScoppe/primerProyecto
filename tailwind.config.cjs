@@ -1,9 +1,8 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     backgroundColor: theme => ({
       ...theme('colors'),
@@ -15,7 +14,11 @@ module.exports = {
     extend: {  colors: {
       'primary': '#FE043C',
       'complementary': '#2E266F',
-    },},
+    },
+    fontFamily: {
+        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
-}
+};

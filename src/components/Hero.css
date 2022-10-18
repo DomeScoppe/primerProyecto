@@ -1,0 +1,92 @@
+.phrase{
+    /* text-shadow: 3px -1px 3px rgba(0, 0, 0, 0.2); */
+    color: rgba(46, 38, 111, 0.1);
+    top:22%;
+    left: 1%;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+    font-style: italic;
+}
+.phrase::after{
+    content: "’";
+
+}
+.restaurantName{
+    top:27%;  
+    left: 3.5%;  
+}
+.heroSearch{
+    color: gray;
+    height: 7.5vh;
+    width: 30vw;
+    border:1px inset black;
+    border-right: none;
+} 
+.heroSearch input{
+    width: 25vw;
+}
+.heroSearch input:focus{
+    outline: none;
+}
+.principalDish{
+    right: 19%;
+    z-index: 2;
+    top: 35%;
+    border: none;
+    border-right: 5px dashed white;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 0.55rem rgba(0, 0, 0, 0.3));
+}
+.principalDish:hover{
+    transform: rotate(360deg);
+    /* rotate: 360deg;  */
+    border: none;
+    transition: transform 2s;
+}
+.user{
+    top:25%;
+    width: 70%;
+    height: 5vh;
+}
+.user label{
+    width: 20%;;
+}
+.user input{
+    width: 80%;
+}
+.user input:focus{
+    outline: none;
+}
+.user>div{
+    top:25%;
+}
+.location{
+    bottom: 5%;
+    left: 5%;
+}
+
+@media (max-width: 800px) {
+    .heroSearch>div{
+        font-size: 1rem;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 640px){
+    .location{
+        bottom: 0;
+        left: 0;
+        
+    }
+    .location>img{
+        width: 32px;
+        height: 24px;
+    }
+    .heroSearch{
+        width:90vw;
+        height: 5.5vh;
+    }
+    .heroSearch>input{
+        width: 70vw;
+    }
+
+}

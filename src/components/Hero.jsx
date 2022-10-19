@@ -2,6 +2,7 @@ import "./Hero.css";
 import { restaurants } from "../data/restaurants";
 import {useState} from 'react';
 import {Link } from 'react-router-dom';
+import Recommendations from "./Recommendations";
 
 const Hero = () => {
   const [searchItems, setSearchItems] = useState([]);
@@ -13,7 +14,7 @@ const handleSearch=(e)=>{
   : setSearchItems([]);
 }
 console.log(searchItems)
-  return (
+  return (<>
     <div className="flex aspect-video relative bg-secondary w-screen max-h-screen">
       <div className="inset-x-0 top-3 mx-auto flex justify-center h-8 absolute sm:justify-start z-10">
         <ul className="flex gap-x-14 h-8 text-complementary font-semibold text-base md:text-lg sm:ml-24 md:ml-32 lg:ml-56 xl:ml-96 ">
@@ -40,7 +41,7 @@ console.log(searchItems)
         </button>
         <ul className={`searchContainer ${!searchItems?.length && 'hidden'}`}>{searchItems?.map(
         (item) => (
-          <Link to={`/products/${item.slug}`}><li key={item.name}>{item.name}</li></Link>
+          <Link to={`/products?${item.slug}`}><li key={item.name}>{item.name}</li></Link>
       ))}</ul>
       </div>
      
@@ -63,6 +64,8 @@ console.log(searchItems)
         <p className="md:-ml-10">En un restaurante de una calle</p>
       </div>
     </div>
+    <Recommendations/>
+    </>
   );
 };
 

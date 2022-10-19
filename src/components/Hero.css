@@ -63,6 +63,16 @@
     bottom: 5%;
     left: 5%;
 }
+.searchContainer{
+    top: 100%;
+    width: inherit;
+    max-height: 19vh;
+    background-color: white;
+    overflow-y: scroll;
+    position: absolute;
+    filter: drop-shadow(0 0 0.1rem rgba(0, 0, 0, 0.3));
+
+}
 
 @media (max-width: 800px) {
     .heroSearch>div{

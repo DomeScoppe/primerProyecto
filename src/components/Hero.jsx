@@ -1,6 +1,18 @@
 import "./Hero.css";
+import { restaurants } from "../data/restaurants";
+import {useState} from 'react';
+import {Link } from 'react-router-dom';
 
 const Hero = () => {
+  const [searchItems, setSearchItems] = useState([]);
+
+const handleSearch=(e)=>{
+  e.preventDefault();
+  e.target.value ?
+  setSearchItems(restaurants.filter((item)=>item.name.toLowerCase().includes(e.target.value.toLowerCase())))
+  : setSearchItems([]);
+}
+console.log(searchItems)
   return (
     <div className="flex aspect-video relative bg-secondary w-screen max-h-screen">
       <div className="inset-x-0 top-3 mx-auto flex justify-center h-8 absolute sm:justify-start z-10">
@@ -21,15 +33,18 @@ const Hero = () => {
       <div className="heroSearch self-center mt-20 mx-auto flex relative md:-mt-10 lg:-mt-5 bg-white shadow-[0_0_8px_1px_rgba(0,0,0,0.3)]">
         <input
           placeholder="placeholder............"
-          className="text-2xl text-center pr-5 sm:pr-0"></input>
-        <div className="flex justify-center items-center text-2xl pl-5 text-white font-bold rounded-bl-full w-1/4 lg:w-2/12 cursor-pointer h-full bg-primary absolute right-0">
+          className="text-2xl text-center pr-5 sm:pr-0" 
+          onChange={handleSearch}></input>
+        <button className="flex justify-center items-center text-2xl pl-5 text-white font-bold rounded-bl-full w-1/4 lg:w-2/12 cursor-pointer h-full bg-primary absolute right-0">
           Go
-        </div>
+        </button>
+        <ul className={`searchContainer ${!searchItems?.length && 'hidden'}`}>{searchItems?.map(
+        (item) => (
+          <Link to={`/products/${item.slug}`}><li key={item.name}>{item.name}</li></Link>
+      ))}</ul>
       </div>
-      <div className="absolute location flex items-center">
-        <img src="src/assets/location.png" className="w-12 h-12 md:w-32 md:h-24" />
-        <p className="md:-ml-10">En un restaurante de una calle</p>
-      </div>
+     
+      
       <div className="hidden left:1/4 sm:flex absolute top-0 right-0 w-1/4 h-full bg-primary  flex-col items-center shadow-[0_-3px_5px_1px_rgba(0,0,0,0.5)]">
         <div className="absolute user flex-nowrap flex justify-between">
           <label className="text-complementary pl-1 rounded-l-full bg-white flex items-center pr-5">
@@ -42,6 +57,10 @@ const Hero = () => {
           src="src/assets/profileIcon.png"
           className="w-1/4 min-w-[32px] aspect-square rounded-full bg-white mt-4 shadow-[0_0_5px_1px_rgba(0,0,0,0.8)]"
           alt="profile"></img>
+      </div>
+      <div className="absolute location flex items-center">
+        <img src="src/assets/location.png" className="w-12 h-12 md:w-32 md:h-24" />
+        <p className="md:-ml-10">En un restaurante de una calle</p>
       </div>
     </div>
   );

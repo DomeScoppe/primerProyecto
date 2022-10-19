@@ -1,6 +1,7 @@
-import Hero from './components/Hero'
-import './index.css'
+import Hero from "./components/Hero";
+import "./index.css";
 import Products from "./components/Products";
+import Recommendations from "./components/Recommendations";
 import {Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Hero/>}/>
         <Route path='/products/:id' element={<Products/>}/>
+        <Route path='/recommendations' element={<Recommendations/>}/>
       </Routes>
   )
 }
